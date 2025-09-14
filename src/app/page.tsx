@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ShieldCheck, Bot } from 'lucide-react';
+import { ShieldCheck, Bot, ArrowRight } from 'lucide-react';
 
 import { slidesData } from '@/lib/slides';
 import Navigation from '@/components/presentation/navigation';
@@ -9,12 +9,14 @@ import Slide from '@/components/presentation/slide';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getPolicySummary } from '@/app/actions';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [year, setYear] = useState<number | null>(null);
   const [summary, setSummary] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPresentation, setShowPresentation] = useState(false);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -23,8 +25,8 @@ export default function Home() {
   const currentSlide = slidesData[currentSlideIndex];
 
   useEffect(() => {
-    const fetchSummary = async () => {
-      if (currentSlide) {
+    if (showPresentation && currentSlide) {
+      const fetchSummary = async () => {
         setIsLoading(true);
         try {
           const result = await getPolicySummary(
@@ -37,11 +39,11 @@ export default function Home() {
         } finally {
           setIsLoading(false);
         }
-      }
-    };
+      };
 
-    fetchSummary();
-  }, [currentSlide]);
+      fetchSummary();
+    }
+  }, [currentSlide, showPresentation]);
 
   const handleNext = () => {
     if (currentSlideIndex < slidesData.length - 1) {
@@ -54,6 +56,36 @@ export default function Home() {
       setCurrentSlideIndex(currentSlideIndex - 1);
     }
   };
+
+  const handleEnter = () => {
+    setShowPresentation(true);
+  };
+
+  if (!showPresentation) {
+    return (
+      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <h1 className="text-4xl font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl">
+            Jhon Carlo Jimenez
+          </h1>
+          <p className="max-w-[600px] text-muted-foreground md:text-xl">
+            Alumni Donation Portal Fraud
+          </p>
+          <Button onClick={handleEnter} className="mt-4" size="lg">
+            Enter
+          </Button>
+          <p className="mt-8 max-w-2xl text-sm text-muted-foreground sm:text-base">
+            Alumni making donations through the university’s online portal reported
+            fraudulent transactions on their credit cards soon after. An IT
+            security audit revealed that the donation portal had been compromised
+            with a payment skimmer, silently collecting card details during
+            transactions. The breach damaged trust with donors and led to a
+            temporary suspension of all online donations.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -100,23 +132,9 @@ export default function Home() {
           </Card>
         </div>
       </div>
-<<<<<<< HEAD
       <footer className="mt-8 text-center text-xs text-muted-foreground">
         {year && <p>&copy; {year} Kaloy Works. All rights reserved.</p>}
       </footer>
-=======
-      <Button onClick={handleEnter} className="mt-8" size="lg">
-        Enter
-      </Button>
-      <p className="mt-8 max-w-2xl text-sm text-muted-foreground sm:text-base">
-        Alumni making donations through the university’s online portal reported
-        fraudulent transactions on their credit cards soon after. An IT
-        security audit revealed that the donation portal had been compromised
-        with a payment skimmer, silently collecting card details during
-        transactions. The breach damaged trust with donors and led to a
-        temporary suspension of all online donations
-      </p>
->>>>>>> d9bdd7c (add this after the button this is my topic Alumni making donations throu)
     </div>
   );
 }
