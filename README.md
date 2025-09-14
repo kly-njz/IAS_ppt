@@ -1,4 +1,4 @@
-# Firebase Studio
+# My IAS PPT USING NextJS
 
 This is a NextJS starter in Firebase Studio.
 
