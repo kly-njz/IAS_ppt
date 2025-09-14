@@ -101,7 +101,7 @@ export default function Home() {
         </div>
       </div>
       <footer className="mt-8 text-center text-xs text-muted-foreground">
-        {year && <p>&copy; {year} Mindoro State University. All rights reserved.</p>}
+        {year && <p>&copy; {year} Kaloy Works. All rights reserved.</p>}
       </footer>
     </div>
   );
