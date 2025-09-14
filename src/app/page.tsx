@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ShieldCheck } from 'lucide-react';
 
 import { slidesData } from '@/lib/slides';
@@ -10,6 +10,12 @@ import { Card } from '@/components/ui/card';
 
 export default function Home() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
 
   const handleNext = () => {
     if (currentSlideIndex < slidesData.length - 1) {
@@ -50,7 +56,7 @@ export default function Home() {
         />
       </div>
       <footer className="mt-8 text-center text-xs text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Mindoro State University. All rights reserved.</p>
+        {year && <p>&copy; {year} Mindoro State University. All rights reserved.</p>}
       </footer>
     </div>
   );
