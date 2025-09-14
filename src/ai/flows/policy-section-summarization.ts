@@ -1,4 +1,3 @@
-// src/ai/flows/policy-section-summarization.ts
 'use server';
 /**
  * @fileOverview Summarizes a policy section using Genkit.
