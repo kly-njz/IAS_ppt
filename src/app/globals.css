@@ -78,6 +78,11 @@ body {
   }
 }
 
+/* In your global.css or a dedicated CSS file */
+nextjs-portal {
+  display: none;
+}
+
 @layer base {
   * {
     @apply border-border;
