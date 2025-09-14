@@ -100,9 +100,23 @@ export default function Home() {
           </Card>
         </div>
       </div>
+<<<<<<< HEAD
       <footer className="mt-8 text-center text-xs text-muted-foreground">
         {year && <p>&copy; {year} Kaloy Works. All rights reserved.</p>}
       </footer>
+=======
+      <Button onClick={handleEnter} className="mt-8" size="lg">
+        Enter
+      </Button>
+      <p className="mt-8 max-w-2xl text-sm text-muted-foreground sm:text-base">
+        Alumni making donations through the university’s online portal reported
+        fraudulent transactions on their credit cards soon after. An IT
+        security audit revealed that the donation portal had been compromised
+        with a payment skimmer, silently collecting card details during
+        transactions. The breach damaged trust with donors and led to a
+        temporary suspension of all online donations
+      </p>
+>>>>>>> d9bdd7c (add this after the button this is my topic Alumni making donations throu)
     </div>
   );
 }
