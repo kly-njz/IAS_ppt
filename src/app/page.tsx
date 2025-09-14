@@ -5,7 +5,6 @@ import { ShieldCheck } from 'lucide-react';
 
 import { slidesData } from '@/lib/slides';
 import Navigation from '@/components/presentation/navigation';
-import PolicySummary from '@/components/presentation/policy-summary';
 import Slide from '@/components/presentation/slide';
 import { Card } from '@/components/ui/card';
 
@@ -25,13 +24,6 @@ export default function Home() {
   };
 
   const currentSlide = slidesData[currentSlideIndex];
-  const slideContentForSummary = [
-    currentSlide.title,
-    currentSlide.subtitle,
-    ...currentSlide.keyPoints,
-  ]
-    .filter(Boolean)
-    .join('. ');
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center p-4 sm:p-6 lg:p-8">
@@ -55,11 +47,6 @@ export default function Home() {
           total={slidesData.length}
           onPrev={handlePrev}
           onNext={handleNext}
-        />
-
-        <PolicySummary
-          key={currentSlideIndex}
-          slideContent={slideContentForSummary}
         />
       </div>
       <footer className="mt-8 text-center text-xs text-muted-foreground">
