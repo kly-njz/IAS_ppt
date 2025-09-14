@@ -38,7 +38,7 @@ export default function Home() {
       <header className="mb-6 flex flex-col items-center gap-3 text-center sm:mb-8">
         <ShieldCheck className="h-10 w-10 text-primary" />
         <h1 className="text-3xl font-bold font-headline text-primary sm:text-4xl">
-          SecureGiving Shield
+          Carlo Jimenez
         </h1>
         <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
           A presentation on the policy framework for restoring donor trust and

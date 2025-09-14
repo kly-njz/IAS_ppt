@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'SecureGiving Shield',
+  title: 'Carlo Jimenez',
   description: 'A Policy Framework for Mindoro State University',
 };
 
